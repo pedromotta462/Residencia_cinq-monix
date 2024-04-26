@@ -83,6 +83,33 @@ app.put('/categories/:id', async (req, res) => {
     res.status(500).json({ error: 'Erro ao atualizar categoria' });
   }
 });
+// Rota para excluir uma categoria específica
+app.delete('/categories/:id', async (req, res) => {
+  try {
+    const authToken = req.authToken;
+    if (!authToken) {
+      return res.status(401).json({ error: 'Usuário não autenticado' });
+    }
+
+    const categoryId = req.params.id;
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${authToken}`
+      }
+    };
+
+    // Faz uma solicitação DELETE para excluir a categoria do Supabase
+    await axios.delete(`${API_URL}${endpoint}/${categoryId}`, config);
+    
+    // Retorna uma resposta de sucesso
+    res.json({ success: true, message: 'Categoria excluída com sucesso' });
+  } catch (error) {
+    console.error('Erro ao excluir categoria:', error);
+    res.status(500).json({ error: 'Erro ao excluir categoria' });
+  }
+});
+
+
 
 // Iniciando o servidor
 app.listen(port, () => {
