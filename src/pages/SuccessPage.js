@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import React, { useEffect,useState } from 'react';
 
 const supabase = createClient(
-  "https://nbabichutvzptjaozrkl.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5iYWJpY2h1dHZ6cHRqYW96cmtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIxODYwMDQsImV4cCI6MjAyNzc2MjAwNH0.O6-ogr3wfgwJ_rJXt27O9fYPD95ISLmUsrPgRDNUtzM"
+    "https://qdhftjyozijsqitjbhio.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkaGZ0anlvemlqc3FpdGpiaGlvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTE3NzA4ODUsImV4cCI6MjAyNzM0Njg4NX0.fsRF_RDiV8WOusVhPsNhxxAe1hO-jYs3kVyYA1dqMsU"
 );
 
 function Success() {
