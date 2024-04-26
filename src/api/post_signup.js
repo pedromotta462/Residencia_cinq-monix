@@ -9,7 +9,7 @@ export const post_signup =  async (req, res) => {
     let authId = await createAuthUser(email, password);
 
     // 2. Insere novo usuário na tabela Users do supabase
-    await createDbUser({ email, password });
+    createDbUser({ id:authId, email});
 
     res.status(200).send("Usuário cadastro com sucesso")
   } catch (error) {

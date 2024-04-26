@@ -9,7 +9,7 @@ export const authLogin = async (email, password) => {
 
     if (error) throw error;
 
-    return data;
+    return data.session;
   } catch (error) {
     console.error("Error logging in:", error.message);
     throw error;
