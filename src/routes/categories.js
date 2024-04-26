@@ -55,6 +55,35 @@ app.get('/categories', async (req, res) => {
   }
 });
 
+// Rota para atualizar uma categoria específica
+app.put('/categories/:id', async (req, res) => {
+  try {
+    const authToken = req.authToken;
+    if (!authToken) {
+      return res.status(401).json({ error: 'Usuário não autenticado' });
+    }
+
+    const categoryId = req.params.id;
+    const newData = req.body;
+
+    const config = {
+      headers: {
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json'
+      }
+    };
+
+    // Faz uma solicitação PUT para atualizar a categoria no Supabase
+    const response = await axios.put(`${API_URL}${endpoint}/${categoryId}`, newData, config);
+    
+    // Retorna os dados atualizados da categoria
+    res.json(response.data);
+  } catch (error) {
+    console.error('Erro ao atualizar categoria:', error);
+    res.status(500).json({ error: 'Erro ao atualizar categoria' });
+  }
+});
+
 // Iniciando o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
