@@ -83,6 +83,8 @@ app.put('/categories/:id', async (req, res) => {
     res.status(500).json({ error: 'Erro ao atualizar categoria' });
   }
 });
+
+
 // Rota para excluir uma categoria específica
 app.delete('/categories/:id', async (req, res) => {
   try {
