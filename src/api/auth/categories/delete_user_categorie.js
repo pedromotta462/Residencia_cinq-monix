@@ -1,4 +1,4 @@
-import { supabase } from './../../init';
+import { supabase } from '../../../init';
 
 export const delete_user_categorie = async (req, res) => {
   try {

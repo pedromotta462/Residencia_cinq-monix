@@ -1,4 +1,4 @@
-import { supabase } from './../../init';
+import { supabase } from '../../../init';
 
 export const get_user_categories = async (req, res) => {
 
