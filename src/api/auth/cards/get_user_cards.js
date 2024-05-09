@@ -1,0 +1,1 @@
+// Segue lógica do Get da tabela Cards 
