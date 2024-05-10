@@ -2,18 +2,32 @@ import { supabase } from '../../../init';
 
 export const post_user_expense = async (req, res) => {
   try {
-    const { data, error } = await supabase
+    if (!req.body.value 
+      || !req.body.date
+      || !req.body.frequency 
+      || !req.body.category_id
+      || !req.body.subcategory_id
+      || !req.body.member_id
+      || !req.body.account_id
+      || !req.body.expense_type_id
+      || !req.body.description
+    ) {
+      res.status(400).json({ error: 'É necessário preencher todos os campos' });
+    }
+
+    const { error } = await supabase
       .from('expenses')
       .insert({
         user_id: req.user.id,
-        data: req.body.data,
-        valor: req.body.valor,
-        frequencia: req.body.frequencia,
-        categoria: req.body.categoria,
-        subcategoria: req.body.subcategoria,
-        tipo_gasto: req.body.tipoGasto,
-        descricao: req.body.descricao,
-        efetivado: req.body.efetivado
+        date: req.body.date,
+        value: req.body.value,
+        frequency: req.body.frequency,
+        category_id: req.body.category_id,
+        subcategory_id: req.body.subcategory_id,
+        member_id: req.body.member_id,
+        account_id: req.body.account_id,
+        expense_type_id: req.body.expense_type_id,
+        description: req.body.description
       });
 
     if (error) {

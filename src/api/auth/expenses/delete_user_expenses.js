@@ -2,7 +2,7 @@ import { supabase } from '../../../init';
 
 export const delete_user_expense = async (req, res) => {
   try {
-    const expenseId = req.body.id;
+    const expenseId = req.params.id;
 
     if (!expenseId) {
       res.status(400).json({ error: 'O id da despesa é obrigatório' });

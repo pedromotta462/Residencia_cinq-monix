@@ -2,16 +2,18 @@ import { supabase } from '../../../init';
 
 export const put_user_expense = async (req, res) => {
   try {
-    const expenseId = req.body.id;
+    const expenseId = req.params.id;
     const updatedExpense = {
-      data: req.body.data,
-      valor: req.body.valor,
-      frequencia: req.body.frequencia,
-      categoria: req.body.categoria,
-      subcategoria: req.body.subcategoria,
-      tipo_gasto: req.body.tipoGasto,
-      descricao: req.body.descricao,
-      efetivado: req.body.efetivado
+      user_id: req.user.id,
+      date: req.body.date,
+      value: req.body.value,
+      frequency: req.body.frequency,
+      category_id: req.body.category_id,
+      subcategory_id: req.body.subcategory_id,
+      member_id: req.body.member_id,
+      account_id: req.body.account_id,
+      expense_type_id: req.body.expense_type_id,
+      description: req.body.description
     };
 
     const { error } = await supabase

@@ -8,6 +8,10 @@ import { get_subcategories_by_categoryId } from './subcategories/get_subcategori
 import { post_user_subcategorie } from './subcategories/post_user_subcategorie';
 import { put_user_subcategorie } from './subcategories/put_user_subcategorie';
 import { delete_user_subcategorie } from './subcategories/delete_user_subcategorie';
+import { get_user_expenses } from './expenses/get_user_expenses';
+import { post_user_expense } from './expenses/post_user_expenses';
+import { put_user_expense } from './expenses/put_user_expenses';
+import { delete_user_expense } from './expenses/delete_user_expenses';
 
 
 
@@ -24,3 +28,8 @@ auth_router.get('/user/subcategories/:categoryId', get_subcategories_by_category
 auth_router.post('/user/subcategories', post_user_subcategorie)
 auth_router.put('/user/subcategories/:subCategoryId', put_user_subcategorie)
 auth_router.delete('/user/subcategories/:subCategoryId', delete_user_subcategorie)
+//expenses
+auth_router.get('/user/expenses', get_user_expenses)
+auth_router.post('/user/expenses', post_user_expense)
+auth_router.put('/user/expenses/:id', put_user_expense)
+auth_router.delete('/user/expenses/:id', delete_user_expense)
