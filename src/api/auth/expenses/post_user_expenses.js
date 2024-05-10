@@ -1,6 +1,6 @@
 import { supabase } from '../../../init';
 
-export const post_expense = async (req, res) => {
+export const post_user_expense = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('expenses')

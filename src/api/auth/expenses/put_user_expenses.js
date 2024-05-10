@@ -1,6 +1,6 @@
 import { supabase } from '../../../init';
 
-export const put_expense = async (req, res) => {
+export const put_user_expense = async (req, res) => {
   try {
     const expenseId = req.body.id;
     const updatedExpense = {
