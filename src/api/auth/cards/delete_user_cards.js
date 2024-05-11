@@ -2,13 +2,13 @@ import { supabase } from "../../../init";
 
 export const delete_user_cards = async (req, res) => {
   try {
-    const cardID = req.body.id;
+    const id = req.params.id;
 
-    if (!cardId) {
+    if (!id) {
       res.status(400).json({ error: "O id do cartão é obrigatório" });
     }
 
-    const { error } = await supabase.from("cards").delete().eq("id", cardId);
+    const { error } = await supabase.from("cards").delete().eq("id", id);
 
     if (error) throw error;
 

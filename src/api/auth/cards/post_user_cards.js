@@ -1,16 +1,29 @@
-// Segue lógica do Post da tabela Cards
-import { supabase } from '../../../init';
+import { supabase } from "../../../init";
 
-//criar um novo cartão de crédito
-app.post('/cards', async (req, res) => {
-    try {
-        const { user_id, nome, dia_fechamento, dia_vencimento, limite, active } = req.body;
-        const { data, error } = await supabase
-            .from('cards')
-            .insert({ user_id, nome, dia_fechamento, dia_vencimento, limite, active: true });
-        if (error) throw error;
-        res.json(data);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+export const post_user_cards = async (req, res) => {
+  try {
+    if (!req.body.name) {
+      res
+      .status(400)
+      .json({ error: "O name do cartão é obrigatório" });
+    }
+
+    const { error } = await supabase
+      .from("cards")
+      .insert({
+        user_id: req.user.id,
+        name: req.body.name,
+        dia_fechamento: req.body.dia_fechamento,
+        dia_vencimento: req.body.dia_vencimento,
+        limite: req.body.limite,
+        active: true,
+      });
+
+    if (error) throw error;
+
+    res.status(200).send("Cartão de crédito cadastrado com sucesso");
+  } catch (error) {
+    console.error("Erro ao cadastrar cartão de crédito :", error);
+    res.status(500).json({ error: "Erro ao recuperar os dados" });
+  }
+};

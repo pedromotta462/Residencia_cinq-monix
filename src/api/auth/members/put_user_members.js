@@ -2,7 +2,7 @@ import { supabase } from "../../../init";
 
 export const put_user_members = async (req, res) => {
   try {
-    const membersId = req.body.id;
+    const membersId = req.params.id;
     const new_members_name = req.body.name;
 
     if (!new_members_name) {

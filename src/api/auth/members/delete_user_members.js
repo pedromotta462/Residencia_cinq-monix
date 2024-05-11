@@ -2,7 +2,7 @@ import { supabase } from "../../../init";
 
 export const delete_user_members = async (req, res) => {
   try {
-    const membersId = req.body.id;
+    const membersId = req.params.id;
 
     if (!membersId) {
       res.status(400).json({ error: "O id do membro familiar é obrigatório" });

@@ -1,17 +1,31 @@
-// Segue lógica do Put da tabela Cards
 import { supabase } from '../../../init';
 
-// atualizar um cartão de crédito existente
-app.put('/cards/:id', async (req, res) => {
+export const put_user_cards = async (req, res) => {
     try {
-        const { nome, dia_fechamento, dia_vencimento, limite, active } = req.body;
-        const { data, error } = await supabase
+        const id = req.params.id;
+        const novo_card = {
+            name: req.body.name,
+            dia_fechamento: req.body.dia_fechamento,
+            dia_vencimento: req.body.dia_vencimento,
+            limite: req.body.limite,
+            active: true
+        }
+
+        if (!req.body.name || !req.body.dia_fechamento || !req.body.dia_vencimento || !req.body.limite) {
+            res
+            .status(400)
+            .json({error: 'Todos os campos são obrigatórios'});
+        }
+        
+        const { error } = await supabase
             .from('cards')
-            .update({ nome, dia_fechamento, dia_vencimento, limite, active })
-            .match({ id: req.params.id });
+            .update(novo_card)
+            .eq("id", id);
+
         if (error) throw error;
-        res.json(data);
+
+        res.status(200).send('Cartão atualizado com sucesso');
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: 'Erro ao atualizar o cartão'});
     }
-});
+};
