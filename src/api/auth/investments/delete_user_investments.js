@@ -1,5 +1,3 @@
-
-
 import { supabase } from "../../../init";
 
 export const delete_user_investments = async (req, res) => {
