@@ -1,17 +1,17 @@
 import { supabase } from '../../../init';
 
-export const delete_user_subcategorie = async (req, res) => {
+export const delete_user_subcategory = async (req, res) => {
   try {
-    const subCategoryId = req.params.subCategoryId;
+    const id = req.params.id;
 
-    if (!subCategoryId) {
+    if (!id) {
       res.status(400).json({ error: 'O id da subcategoria é obrigatório' });
     }
 
     const { error } = await supabase
     .from('subcategories')
     .delete()
-    .eq('id', subCategoryId)
+    .eq('id', id)
 
     if (error) throw error;
 

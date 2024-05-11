@@ -5,9 +5,9 @@ import { post_user_category } from './categories/post_user_category';
 import { put_user_category } from './categories/put_user_category';
 import { delete_user_category } from './categories/delete_user_category';
 import { get_subcategories_by_categoryId } from './subcategories/get_subcategories_by_categoryId';
-import { post_user_subcategorie } from './subcategories/post_user_subcategorie';
-import { put_user_subcategorie } from './subcategories/put_user_subcategorie';
-import { delete_user_subcategorie } from './subcategories/delete_user_subcategorie';
+import { post_user_subcategory } from './subcategories/post_user_subcategory';
+import { put_user_subcategory } from './subcategories/put_user_subcategory';
+import { delete_user_subcategory } from './subcategories/delete_user_subcategory';
 import { get_user_expenses } from './expenses/get_user_expenses';
 import { post_user_expense } from './expenses/post_user_expenses';
 import { put_user_expense } from './expenses/put_user_expenses';
@@ -24,10 +24,10 @@ auth_router.post('/user/categories', post_user_category)
 auth_router.put('/user/categories/:id', put_user_category)
 auth_router.delete('/user/categories/:id', delete_user_category)
 //subcategories
-auth_router.get('/user/subcategories/:categoryId', get_subcategories_by_categoryId)
-auth_router.post('/user/subcategories', post_user_subcategorie)
-auth_router.put('/user/subcategories/:subCategoryId', put_user_subcategorie)
-auth_router.delete('/user/subcategories/:subCategoryId', delete_user_subcategorie)
+auth_router.get('/user/subcategories/:id', get_subcategories_by_categoryId)
+auth_router.post('/user/subcategories', post_user_subcategory)
+auth_router.put('/user/subcategories/:id', put_user_subcategory)
+auth_router.delete('/user/subcategories/:id', delete_user_subcategory)
 //expenses
 auth_router.get('/user/expenses', get_user_expenses)
 auth_router.post('/user/expenses', post_user_expense)

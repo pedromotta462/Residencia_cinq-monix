@@ -1,17 +1,17 @@
 import { supabase } from '../../../init';
 
-export const put_user_subcategorie = async (req, res) => {
+export const put_user_subcategory = async (req, res) => {
   try {
-    const id = req.params.subCategoryId;
-    const newName = req.body.name;
+    const id = req.params.id;
+    const name = req.body.name;
 
-    if (!newName) {
+    if (!name) {
       res.status(400).json({ error: 'O nome da categoria é obrigatório' });
     }
 
     const { error } = await supabase
     .from('subcategories')
-    .update({ name: newName })
+    .update({ name: name })
     .eq('id', id)
 
     if (error) throw error;

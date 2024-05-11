@@ -1,6 +1,6 @@
 import { supabase } from '../../../init';
 
-export const post_user_subcategorie = async (req, res) => {
+export const post_user_subcategory = async (req, res) => {
   try {
     if (!req.body.name) {
       res.status(400).json({ error: 'O nome da subcategoria é obrigatório' });
