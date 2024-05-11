@@ -16,6 +16,10 @@ import { get_user_cards } from './cards/get_user_cards';
 import { post_user_cards } from './cards/post_user_cards';
 import { put_user_cards } from './cards/put_user_cards';
 import { delete_user_cards } from './cards/delete_user_cards';
+import { get_user_investments } from './investments/get_user_investments';
+import { post_user_investments } from './investments/post_user_investments';
+import { put_user_investments } from './investments/put_user_investments';
+import { delete_user_investments } from './investments/delete_user_investments';
 
 
 
@@ -43,7 +47,7 @@ auth_router.post('/user/cards', post_user_cards)
 auth_router.put('/user/cards/:id', put_user_cards)
 auth_router.delete('/user/cards/:id', delete_user_cards)
 //investments
-//auth_router.get('/user/investments', get_user_investments)
-//auth_router.post('/user/investments', post_user_investments)
-//auth_router.put('/user/investments/:id', put_user_investments)
-//auth_router.delete('/user/investments/:id', delete_user_investments)
+auth_router.get('/user/investments', get_user_investments)
+auth_router.post('/user/investments', post_user_investments)
+auth_router.put('/user/investments/:id', put_user_investments)
+auth_router.delete('/user/investments/:id', delete_user_investments)
