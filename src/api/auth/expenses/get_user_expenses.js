@@ -4,7 +4,34 @@ export const get_user_expenses = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('expenses')
-      .select('*')
+      .select(`
+        id,
+        user_id,
+        category_id (
+          id,
+          name
+        ),
+        subcategory_id (
+          id, 
+          name
+        ),
+        member_id (
+          id,
+          name
+        ),
+        account_id (
+          id, 
+          name
+        ),
+        expense_type_id (
+          id,
+          name
+        ),
+        date,
+        value,
+        description,
+        frequency
+      `)
       .eq('user_id', req.user.id);
 
     if (error) {

@@ -6,7 +6,14 @@ export const get_subcategories_by_categoryId = async (req, res) => {
 
     const { data, error } = await supabase
     .from('subcategories')
-    .select('*')
+    .select(`
+      id, 
+      name, 
+      category_id (
+        id, 
+        name
+      )
+    `)
     .eq('category_id', id)
 
     res.status(200).send(data)
