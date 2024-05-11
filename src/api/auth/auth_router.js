@@ -43,3 +43,7 @@ auth_router.post('/user/cards', post_user_cards)
 auth_router.put('/user/cards/:id', put_user_cards)
 auth_router.delete('/user/cards/:id', delete_user_cards)
 //investments
+//auth_router.get('/user/investments', get_user_investments)
+//auth_router.post('/user/investments', post_user_investments)
+//auth_router.put('/user/investments/:id', put_user_investments)
+//auth_router.delete('/user/investments/:id', delete_user_investments)
