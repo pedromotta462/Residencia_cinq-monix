@@ -2,17 +2,21 @@ import { supabase } from "../../../init";
 
 export const put_user_members = async (req, res) => {
   try {
-    const membersId = req.params.id;
-    const new_members_name = req.body.name;
+    const id = req.params.id;
+    const updatedMember = {
+      name: req.body.name,
+    };
 
-    if (!new_members_name) {
-      res.status(400).json({ error: "O nome do familiar é obrigatório" });
+    if (!updatedMember) {
+      res
+      .status(400)
+      .json({ error: "O nome do familiar é obrigatório" });
     }
 
     const { error } = await supabase
       .from("members")
-      .update({ name: new_members_name })
-      .eq("id", membersId);
+      .update(updatedMember)
+      .eq("id", id);
 
     if (error) throw error;
 

@@ -3,7 +3,7 @@ import { supabase } from '../../../init';
 export const put_user_cards = async (req, res) => {
     try {
         const id = req.params.id;
-        const novo_card = {
+        const uptadetCard = {
             name: req.body.name,
             dia_fechamento: req.body.dia_fechamento,
             dia_vencimento: req.body.dia_vencimento,
@@ -19,7 +19,7 @@ export const put_user_cards = async (req, res) => {
         
         const { error } = await supabase
             .from('cards')
-            .update(novo_card)
+            .update(uptadetCard)
             .eq("id", id);
 
         if (error) throw error;

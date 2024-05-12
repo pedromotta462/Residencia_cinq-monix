@@ -6,17 +6,26 @@ export const post_user_investments = async (req, res) => {
       !req.body.date ||
       !req.body.value ||
       !req.body.description ||
-      !req.body.origin
+      !req.body.origin ||
+      !req.body.goal_id ||
+      !req.body.category_id ||
+      !req.body.subcategory_id ||
+      !req.body.member_id ||
+      !req.body.account_id ||
+      !req.body.investments_type_id
     ) {
-      res.status(400).json({ error: "Todos os campos são obrigatórios" });
+      res
+      .status(400)
+      .json({ error: "Todos os campos são obrigatórios" });
     }
 
     const { error } = await supabase.from("investments").insert({
       user_id: req.user.id,
       goal_id: req.body.goal_id,
       category_id: req.body.category_id,
-      subCategory_id: req.body.subCategory_id,
+      subcategory_id: req.body.subcategory_id,
       member_id: req.body.member_id,
+      account_id: req.body.account_id,
       investments_type_id: req.body.investments_type_id,
       date: req.body.date,
       value: req.body.value,
