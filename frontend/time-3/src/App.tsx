@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
+import autoTable from "jspdf-autotable";
 import "./App.css";
 import { createClient } from "@supabase/supabase-js";
 
@@ -238,7 +238,7 @@ function App() {
     const tableColumn = ["Id", "User_ID", "Objetivo", "Valor Inicial", "Prazo", "Valor Desejado"];
     const tableRows: any = [];
 
-    goals.forEach(goal => {
+    goals.forEach((goal: { id: any; user_id: any; objetivo: any; valor_inicial: any; prazo: any; valor_desejado: any; }) => {
       const goalData = [
         goal.id,
         goal.user_id,
@@ -250,7 +250,7 @@ function App() {
       tableRows.push(goalData);
     });
 
-    doc.autoTable({
+    autoTable(doc, {
       head: [tableColumn],
       body: tableRows,
       startY: 30,
