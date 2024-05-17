@@ -1,15 +1,30 @@
-// import { supabase } from '../../../init';
+import { supabase } from '../../../init';
 
-// export const post_user_planned_expense = async (req, res) => {
-//     try {
-//         !req.body.mounth
-//       || !req.body.date
-//       || !req.body.frequency 
-//       || !req.body.category_id
-//       || !req.body.subcategory_id
-//       || !req.body.member_id
-//       || !req.body.account_id
-//       || !req.body.expense_type_id
-//       || !req.body.description
-//     }
-// }
+export const post_user_planned_expense = async (req, res) => {
+    try {
+        if (!req.body.name
+          || !req.body.mounth
+          || !req.body.year 
+        ) {
+            res.status(400).json({ error: 'É necessário preencher todos os campos' });
+        }
+
+        const { error } = await supabase
+        .from('planne_expense')
+        .insert({
+            user_id: req.user.id,
+            name: req.body.name,
+            mounth: req.body.mounth,
+            year: req.body.year
+        });
+
+        if (error) {
+            throw error;
+        }
+
+        res.status(201).send('Planejamento de despesa criada com sucesso');
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao criar planejamento de despesa' });
+    }
+
+}
