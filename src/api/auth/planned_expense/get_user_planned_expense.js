@@ -7,6 +7,7 @@ export const get_user_planned_expense = async (req, res) => {
         .select(`
             id,
             user_id,
+            name,
             mounth,
             year
         `)
