@@ -1,6 +1,6 @@
 import { supabase } from '../../../init';
 
-export const put_user_expense = async (req, res) => {
+export const put_user_typeofexpense = async (req, res) => {
   try {
     const typesofexpensesId = req.params.id;
     const updatedtypesofexpenses = {
@@ -10,9 +10,9 @@ export const put_user_expense = async (req, res) => {
     };
 
     const { error } = await supabase
-      .from('typesofexpenses')
-      .update(updatedtypesofexpenses)
-      .eq('id', typesofexpensesId);
+      .from('type_expenses')
+      .update(updatedtypes_expenses)
+      .eq('id', types_expensesId);
 
     if (error) {
       throw error;
