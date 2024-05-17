@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import "./App.css";
