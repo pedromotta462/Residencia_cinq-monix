@@ -14,6 +14,8 @@ import { put_user_expense } from './expenses/put_user_expenses';
 import { delete_user_expense } from './expenses/delete_user_expenses';
 import { get_user_planned_expense } from './planned_expense/get_user_planned_expense';
 import { post_user_planned_expense } from './planned_expense/post_user_planned_expenses';
+import { put_user_planned_expense } from './planned_expense/put_user_planned_expense';
+import { delete_user_planned_expense } from './planned_expense/delete_user_planned_expense';
 
 
 
@@ -38,3 +40,5 @@ auth_router.delete('/user/expenses/:id', delete_user_expense)
 //planned-expenses
 auth_router.get('/user/planned-expenses', get_user_planned_expense)
 auth_router.post('/user/planned-expenses', post_user_planned_expense)
+auth_router.put('/user/planned-expenses/:id', put_user_planned_expense)
+auth_router.delete('/user/planned-expenses/:id', delete_user_planned_expense)

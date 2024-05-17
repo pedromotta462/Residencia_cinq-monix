@@ -3,11 +3,10 @@ import { supabase } from '../../../init';
 export const get_user_planned_expense = async (req, res) => {
     try{
         const { data, error } = await supabase
-        .from('planned_expenses')
+        .from('planned_expense')
         .select(`
             id,
             user_id,
-            name,
             month,
             year
         `)
