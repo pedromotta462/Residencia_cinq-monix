@@ -1,9 +1,9 @@
 import { supabase } from '../../../init';
 
-export const get_user_expenses = async (req, res) => {
+export const get_user_typeofexpenses = async (req, res) => {
   try {
     const { data, error } = await supabase
-      .from('type of expenses')
+      .from('type_expenses')
       .select(`
         id,
         user_id,
