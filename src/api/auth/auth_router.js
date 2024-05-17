@@ -14,8 +14,8 @@ import { put_user_expense } from './expenses/put_user_expenses';
 import { delete_user_expense } from './expenses/delete_user_expenses';
 import { get_user_planned_expense } from './planned_expense/get_user_planned_expense';
 import { post_user_planned_expense } from './planned_expense/post_user_planned_expenses';
-import { get_user_type_expenses } from './type_expenses/get_user_type_expenses';
-import { put_user_type_expenses } from '../type_expenses/put_user_type_expenses';
+import { get_user_typeofexpenses } from './type_expenses/get_user_typeofexpenses';
+import { put_user_typeofexpenses } from './type_expenses/put_user_typeofexpenses';
 
 
 export const auth_router = express.Router();
@@ -40,5 +40,5 @@ auth_router.delete('/user/expenses/:id', delete_user_expense)
 auth_router.get('/user/planned-expenses', get_user_planned_expense)
 auth_router.post('/user/planned-expenses', post_user_planned_expense)
 //typesofexpenses
-auth_router.get('/user/typeexpenses', get_user_typesofexpenses)
-auth_router.put('/user/typeexpenses/:id', put_user_typesofexpenses)
+auth_router.get('/user/typeofexpenses', get_user_typeofexpenses)
+auth_router.put('/user/typeofexpenses/:id', put_user_typeofexpenses)
