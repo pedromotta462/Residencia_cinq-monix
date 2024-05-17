@@ -12,6 +12,8 @@ import { get_user_expenses } from './expenses/get_user_expenses';
 import { post_user_expense } from './expenses/post_user_expenses';
 import { put_user_expense } from './expenses/put_user_expenses';
 import { delete_user_expense } from './expenses/delete_user_expenses';
+import { get_user_planned_expense } from './planned_expense/get_user_planned_expense';
+import { post_user_planned_expense } from './planned_expense/post_user_planned_expenses';
 
 
 
@@ -33,3 +35,6 @@ auth_router.get('/user/expenses', get_user_expenses)
 auth_router.post('/user/expenses', post_user_expense)
 auth_router.put('/user/expenses/:id', put_user_expense)
 auth_router.delete('/user/expenses/:id', delete_user_expense)
+//planned-expenses
+auth_router.get('/user/planned-expenses', get_user_planned_expense)
+auth_router.post('/user/planned-expenses', post_user_planned_expense)

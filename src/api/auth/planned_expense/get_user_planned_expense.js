@@ -8,7 +8,7 @@ export const get_user_planned_expense = async (req, res) => {
             id,
             user_id,
             name,
-            mounth,
+            month,
             year
         `)
         .eq('user_id', req.user.id)
