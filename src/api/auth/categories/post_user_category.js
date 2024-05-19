@@ -1,15 +1,15 @@
 import { supabase } from '../../../init';
 
-export const post_user_categorie = async (req, res) => {
+export const post_user_category = async (req, res) => {
   try {
 
-    if (!req.body.categorie_name) {
+    if (!req.body.name) {
       res.status(400).json({ error: 'O nome da categoria é obrigatório' });
     }
 
     const { error } = await supabase
     .from('categories')
-    .insert({ user_id: req.user.id, name: req.body.categorie_name })
+    .insert({ user_id: req.user.id, name: req.body.name })
 
     if (error) throw error;
 

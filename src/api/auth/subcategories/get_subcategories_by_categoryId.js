@@ -2,12 +2,19 @@ import { supabase } from '../../../init';
 
 export const get_subcategories_by_categoryId = async (req, res) => {
   try {
-    const categoryId = req.params.categoryId;
+    const id = req.params.id;
 
     const { data, error } = await supabase
     .from('subcategories')
-    .select('*')
-    .eq('category_id', categoryId)
+    .select(`
+      id, 
+      name, 
+      category_id (
+        id, 
+        name
+      )
+    `)
+    .eq('category_id', id)
 
     res.status(200).send(data)
   } catch (error) {
