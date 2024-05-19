@@ -1,4 +1,4 @@
-import { supabase } from '../../../init';
+import { supabase } from "../../../init";
 
 export const put_user_cards = async (req, res) => {
     try {
@@ -8,24 +8,29 @@ export const put_user_cards = async (req, res) => {
             dia_fechamento: req.body.dia_fechamento,
             dia_vencimento: req.body.dia_vencimento,
             limite: req.body.limite,
-            active: true
+            active: true,
+        };
+
+        if (
+            !req.body.name
+            || !req.body.dia_fechamento
+            || !req.body.dia_vencimento
+            || !req.body.limite
+        ) {
+            res
+                .status(400)
+                .json({ error: "Todos os campos são obrigatórios" });
         }
 
-        if (!req.body.name || !req.body.dia_fechamento || !req.body.dia_vencimento || !req.body.limite) {
-            res
-            .status(400)
-            .json({error: 'Todos os campos são obrigatórios'});
-        }
-        
         const { error } = await supabase
-            .from('cards')
+            .from("cards")
             .update(uptadetCard)
             .eq("id", id);
 
         if (error) throw error;
 
-        res.status(200).send('Cartão atualizado com sucesso');
+        res.status(200).send("Cartão atualizado com sucesso");
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao atualizar o cartão'});
-    }
+        res.status(500).json({ error: "Erro ao atualizar o cartão" });
+    }
 };

@@ -4,8 +4,17 @@ export const get_user_cards = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from("cards")
-      .select("*")
+      .select(`
+      id,
+      user_id,
+      name,
+      dia_fechamento,
+      dia_vencimento,
+      limite      
+      `)
       .eq("user_id", req.user.id);
+
+    if (error) throw error;
 
     res.status(200).send(data);
   } catch (error) {

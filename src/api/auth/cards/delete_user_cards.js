@@ -5,10 +5,15 @@ export const delete_user_cards = async (req, res) => {
     const id = req.params.id;
 
     if (!id) {
-      res.status(400).json({ error: "O id do cartão é obrigatório" });
+      res
+        .status(400)
+        .json({ error: "O id do cartão é obrigatório" });
     }
 
-    const { error } = await supabase.from("cards").delete().eq("id", id);
+    const { error } = await supabase
+      .from("cards")
+      .delete()
+      .eq("id", id);
 
     if (error) throw error;
 

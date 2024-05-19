@@ -3,12 +3,17 @@ import { supabase } from "../../../init";
 export const post_user_members = async (req, res) => {
   try {
     if (!req.body.name) {
-      res.status(400).json({ error: "O nome do membro da familia é obrigatório" });
+      res
+        .status(400)
+        .json({ error: "O nome do membro da familia é obrigatório" });
     }
 
     const { error } = await supabase
       .from("members")
-      .insert({ user_id: req.user.id, name: req.body.name });
+      .insert({
+        user_id: req.user.id,
+        name: req.body.name
+      });
 
     if (error) throw error;
 

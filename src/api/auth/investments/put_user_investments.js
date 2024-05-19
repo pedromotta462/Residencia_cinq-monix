@@ -6,7 +6,7 @@ export const put_user_investments = async (req, res) => {
       user_id: req.user.id,
       goal_id: req.body.goal_id,
       category_id: req.body.category_id,
-      subcategory_id: req.body.subCategory_id,
+      subcategory_id: req.body.subcategory_id,
       member_id: req.body.member_id,
       account_id: req.body.account_id,
       investments_type_id: req.body.investments_type_id,
@@ -14,21 +14,21 @@ export const put_user_investments = async (req, res) => {
       value: req.body.value,
       planner: req.body.planner,
       description: req.body.description,
-      frequency: req.body.frequency,
-      origin: req.body.origin,
+      frequency: req.body.frequency
+      // origin: req.body.origin,
     };
 
     if (
-      !req.body.date ||
-      !req.body.value ||
-    //   !req.body.planner ||
-      !req.body.description ||
-    //   !req.body.frequency ||
-      !req.body.origin
+      !req.body.date
+      || !req.body.value
+      // || !req.body.planner 
+      || !req.body.description
+      || !req.body.frequency
+      // || !req.body.origin
     ) {
       res
-      .status(400)
-      .json({ error: "Todos os campos são obrigatórios" });
+        .status(400)
+        .json({ error: "Todos os campos são obrigatórios" });
     }
 
     const { error } = await supabase
