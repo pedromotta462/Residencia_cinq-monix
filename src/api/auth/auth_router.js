@@ -28,6 +28,10 @@ import { get_user_investments } from './investments/get_user_investments';
 import { post_user_investments } from './investments/post_user_investments';
 import { put_user_investments } from './investments/put_user_investments';
 import { delete_user_investments } from './investments/delete_user_investments';
+import { get_user_planned_incoming_category_by_category_id } from './planned_incoming_category/get_user_planned_incoming_category';
+import { post_user_planned_incoming_category } from './planned_incoming_category/post_user_planned_incoming_category';
+import { put_user_planned_incoming_category } from './planned_incoming_category/put_user_planned_incoming_category';
+import { delete_user_planned_incoming_category } from './planned_incoming_category/delete_user_planned_incoming_category';
 
 
 
@@ -49,11 +53,16 @@ auth_router.get('/user/expenses', get_user_expenses)
 auth_router.post('/user/expenses', post_user_expense)
 auth_router.put('/user/expenses/:id', put_user_expense)
 auth_router.delete('/user/expenses/:id', delete_user_expense)
-//planned-expenses
+//planned_expenses
 auth_router.get('/user/planned-expenses', get_user_planned_expense)
 auth_router.post('/user/planned-expenses', post_user_planned_expense)
 auth_router.put('/user/planned-expenses/:id', put_user_planned_expense)
 auth_router.delete('/user/planned-expenses/:id', delete_user_planned_expense)
+//planned_incoming_category
+auth_router.get('/user/planned_incoming_category/:id', get_user_planned_incoming_category_by_category_id)
+auth_router.post('/user/planned_incoming_category', post_user_planned_incoming_category)
+auth_router.put('/user/planned_incoming_category/:id', put_user_planned_incoming_category)
+auth_router.delete('/user/planned_incoming_category/:id', delete_user_planned_incoming_category)
 //members
 auth_router.get('/user/members', get_user_members)
 auth_router.post('/user/members', post_user_members)
