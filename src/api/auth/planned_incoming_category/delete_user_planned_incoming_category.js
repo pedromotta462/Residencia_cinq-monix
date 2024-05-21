@@ -5,7 +5,7 @@ export const delete_user_planned_incoming_category = async (req, res) => {
     const planned_incoming_category_id = req.params.id;
 
     if (!planned_incoming_category_id) {
-      res.status(400).json({ error: 'O id da categoria de planejamento de entrada é obrigatório' });
+      res.status(400).json({ error: 'O id da categoria da entrada planejada é obrigatório' });
     }
 
     const { error } = await supabase
@@ -17,9 +17,9 @@ export const delete_user_planned_incoming_category = async (req, res) => {
       throw error;
     }
 
-    res.status(200).send("Categoria de planejamento de entrada excluído com sucesso");
+    res.status(200).send("Categoria de entrada planejada excluído com sucesso");
   } catch (error) {
-    console.error('Erro ao excluir categoria de planejamento de entrada:', error);
-    res.status(500).json({ error: 'Erro ao excluir categoria de planejamento de entrada' });
+    console.error('Erro ao excluir categoria de entrada planejada:', error);
+    res.status(500).json({ error: 'Erro ao excluir categoria da entrada planejada' });
   }
 };

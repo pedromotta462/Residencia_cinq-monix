@@ -19,10 +19,10 @@ export const post_user_planned_incoming_category= async (req, res) => {
 
         if (error) throw error;
 
-        res.status(201).send('Categoria de planejamento de entrada criada com sucesso');
+        res.status(201).send('Categoria de entrada planejada criada com sucesso');
     } catch (error) {
         console.log(error.message)
-        res.status(500).json({ error: 'Erro ao criar categoria de planejamento de entrada' });
+        res.status(500).json({ error: 'Erro ao criar categoria de entrada planejada' });
     }
 
 }

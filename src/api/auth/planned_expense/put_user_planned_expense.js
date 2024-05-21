@@ -17,9 +17,9 @@ export const put_user_planned_expense = async (req, res) => {
       throw error;
     }
 
-    res.status(200).send("Despesa atualizada com sucesso");
+    res.status(200).send("Despesa planejada atualizada com sucesso");
   } catch (error) {
-    console.error('Erro ao atualizar despesa:', error);
-    res.status(500).json({ error: 'Erro ao atualizar despesa' });
+    console.error('Erro ao atualizar despesa planejada:', error);
+    res.status(500).json({ error: 'Erro ao atualizar despesa planejada' });
   }
 };

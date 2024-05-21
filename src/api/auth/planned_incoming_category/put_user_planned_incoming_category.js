@@ -16,9 +16,9 @@ export const put_user_planned_incoming_category = async (req, res) => {
       throw error;
     }
 
-    res.status(200).send("Categoria de planejamento de entrada atualizada com sucesso");
+    res.status(200).send("Categoria de entrada planejada atualizada com sucesso");
   } catch (error) {
-    console.error('Erro ao atualizar despesa:', error);
-    res.status(500).json({ error: 'Erro ao atualizar categoria planejamento de entrada' });
+    console.error('Erro ao atualizar categoria de entrada planejada:', error);
+    res.status(500).json({ error: 'Erro ao atualizar categoria da entrada planejada' });
   }
 };

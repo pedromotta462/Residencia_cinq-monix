@@ -24,6 +24,6 @@ export const get_user_planned_incoming_category_by_category_id = async (req, res
         res.status(200).send(data);
     } catch (error) {
         console.log(error)
-        res.status(500).json({ error: 'Erro ao recuperar categorias de planejamentos de entradas' });
+        res.status(500).json({ error: 'Erro ao recuperar categorias das entradas planejadas' });
     }
 }
