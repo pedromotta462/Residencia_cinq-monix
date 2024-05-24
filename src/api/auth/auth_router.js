@@ -9,11 +9,13 @@ import { post_user_subcategory } from './subcategories/post_user_subcategory';
 import { put_user_subcategory } from './subcategories/put_user_subcategory';
 import { delete_user_subcategory } from './subcategories/delete_user_subcategory';
 import { get_user_expenses } from './expenses/get_user_expenses';
-import { post_user_expense } from './expenses/post_user_expenses';
-import { put_user_expense } from './expenses/put_user_expenses';
-import { delete_user_expense } from './expenses/delete_user_expenses';
+import { post_user_expenses } from './expenses/post_user_expenses';
+import { put_user_expenses } from './expenses/put_user_expenses';
+import { delete_user_expenses } from './expenses/delete_user_expenses';
 import { get_user_planned_expense } from './planned_expense/get_user_planned_expense';
 import { post_user_planned_expense } from './planned_expense/post_user_planned_expenses';
+import { get_user_typeofexpenses } from './type_expenses/get_user_typeofexpenses';
+import { put_user_typeofexpenses } from './type_expenses/put_user_typeofexpenses';
 import { put_user_planned_expense } from './planned_expense/put_user_planned_expense';
 import { delete_user_planned_expense } from './planned_expense/delete_user_planned_expense';
 import { get_user_members } from './members/get_user_members';
@@ -32,7 +34,10 @@ import { get_user_planned_incoming_category_by_category_id } from './planned_inc
 import { post_user_planned_incoming_category } from './planned_incoming_category/post_user_planned_incoming_category';
 import { put_user_planned_incoming_category } from './planned_incoming_category/put_user_planned_incoming_category';
 import { delete_user_planned_incoming_category } from './planned_incoming_category/delete_user_planned_incoming_category';
-
+import { get_user_goals } from './goals/get_user_goals';
+import { post_user_goals } from './goals/post_user_goals';
+import { put_user_goals } from './goals/put_user_goals';
+import { delete_user_goals } from './goals/delete_user_goals';
 
 
 export const auth_router = express.Router();
@@ -50,9 +55,17 @@ auth_router.put('/user/subcategories/:id', put_user_subcategory)
 auth_router.delete('/user/subcategories/:id', delete_user_subcategory)
 //expenses
 auth_router.get('/user/expenses', get_user_expenses)
-auth_router.post('/user/expenses', post_user_expense)
-auth_router.put('/user/expenses/:id', put_user_expense)
-auth_router.delete('/user/expenses/:id', delete_user_expense)
+auth_router.post('/user/expenses', post_user_expenses)
+auth_router.put('/user/expenses/:id', put_user_expenses)
+auth_router.delete('/user/expenses/:id', delete_user_expenses)
+//goals
+auth_router.get('/user/goals', get_user_goals)
+auth_router.post('/user/goals', post_user_goals)
+auth_router.put('/user/goals/:id', put_user_goals)
+auth_router.delete('/user/goals/:id', delete_user_goals)
+//typesofexpenses
+auth_router.get('/user/typeofexpenses', get_user_typeofexpenses)
+auth_router.put('/user/typeofexpenses/:id', put_user_typeofexpenses)
 //planned_expenses
 auth_router.get('/user/planned_expenses', get_user_planned_expense)
 auth_router.post('/user/planned_expenses', post_user_planned_expense)
@@ -78,3 +91,4 @@ auth_router.get('/user/investments', get_user_investments)
 auth_router.post('/user/investments', post_user_investments)
 auth_router.put('/user/investments/:id', put_user_investments)
 auth_router.delete('/user/investments/:id', delete_user_investments)
+
