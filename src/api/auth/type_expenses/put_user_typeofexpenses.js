@@ -1,18 +1,18 @@
 import { supabase } from '../../../init';
 
-export const put_user_typeofexpense = async (req, res) => {
+export const put_user_typeofexpenses = async (req, res) => {
   try {
     const typesofexpensesId = req.params.id;
     const updatedtypesofexpenses = {
       id: req.body.id,
       user_id: req.user.id,
-      enum: req.body.enum
+      ENUM: req.body.ENUM
     };
 
     const { error } = await supabase
       .from('type_expenses')
-      .update(updatedtypes_expenses)
-      .eq('id', types_expensesId);
+      .update(updatedtypesofexpenses)
+      .eq('id', typesofexpensesId);
 
     if (error) {
       throw error;

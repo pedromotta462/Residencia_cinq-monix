@@ -7,7 +7,7 @@ export const get_user_typeofexpenses = async (req, res) => {
       .select(`
         id,
         user_id,
-         enum
+         ENUM
       `)
       .eq('user_id', req.user.id);
 
