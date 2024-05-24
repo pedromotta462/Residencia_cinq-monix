@@ -12,6 +12,16 @@
 - Nicholas Bergqvist
 - Rafael Figueirôa
 
+### Squad - 02:
+
+- Ana Caroline
+- Antony Marcos
+- Artur Inocêncio
+- Brenno Freitas
+- Carlos Sérgio
+- Júlia Rocha
+- Sidney Lima
+
 ### Squad - 04:
 
 - Andrey Kaiky Reis Ferreira
