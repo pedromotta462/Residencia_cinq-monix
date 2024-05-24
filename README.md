@@ -1,6 +1,8 @@
 # MONIX
  
 ## Autores:
+### Squad - 01:
+
 - Gabriel Vinicius
 - Giovanna Cunha
 - Iale Almeida
@@ -9,6 +11,15 @@
 - Luís Manoel
 - Nicholas Bergqvist
 - Rafael Figueirôa
+
+### Squad - 04:
+
+- Andrey Kaiky Reis Ferreira
+- Carlos Guilherme
+- Davi Marcelo
+- Devid Silva
+- Edson Silva
+- Maria Clara
 
 ## Como rodar localmente
 1. Abra o git bash no diretório desejado

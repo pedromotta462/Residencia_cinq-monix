@@ -3,11 +3,10 @@ import { supabase } from '../../../init';
 export const get_user_planned_expense = async (req, res) => {
     try{
         const { data, error } = await supabase
-        .from('planned_expenses')
+        .from('planned_expense')
         .select(`
             id,
             user_id,
-            name,
             month,
             year
         `)
@@ -15,6 +14,6 @@ export const get_user_planned_expense = async (req, res) => {
     
         res.status(200).send(data);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao recuperar categorias' });
+        res.status(500).json({ error: 'Erro ao recuperar despesas planejadas' });
     }
 }

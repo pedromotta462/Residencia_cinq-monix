@@ -2,18 +2,16 @@ import { supabase } from '../../../init';
 
 export const post_user_planned_expense = async (req, res) => {
     try {
-        if (!req.body.name
-          || !req.body.month
+        if (!req.body.month
           || !req.body.year 
         ) {
             res.status(400).json({ error: 'É necessário preencher todos os campos' });
         }
 
         const { error } = await supabase
-        .from('planned_expenses')
+        .from('planned_expense')
         .insert({
             user_id: req.user.id,
-            name: req.body.name,
             month: req.body.month,
             year: req.body.year
         });
