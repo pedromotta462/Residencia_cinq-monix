@@ -1,4 +1,5 @@
 import { supabase } from '../../../init';
+import { createTypeExpenses } from '../../../database/createTypeExpenses.js';
 
 export const post_user_expense = async (req, res) => {
   try {
@@ -15,7 +16,7 @@ export const post_user_expense = async (req, res) => {
       res.status(400).json({ error: 'É necessário preencher todos os campos' });
     }
 
-    const { error } = await supabase
+    let query = await supabase 
       .from('expenses')
       .insert({
         user_id: req.user.id,
@@ -29,11 +30,14 @@ export const post_user_expense = async (req, res) => {
         expense_type_id: req.body.expense_type_id,
         description: req.body.description
       });
-
+let error = query["error"]
     if (error) {
       throw error;
     }
-
+    console.log(query)
+    console.log(req.user.id)
+    let cte=await createTypeExpenses ({user_id:req.user.id})
+    console.log(cte)
     res.status(201).send("Despesa criada com sucesso");
   } catch (error) {
     console.error('Erro ao criar despesa:', error);
