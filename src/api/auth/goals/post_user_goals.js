@@ -8,6 +8,7 @@ export const post_user_goals = async (req, res) => {
       || !req.body.valor_desejado
     ) {
       res.status(400).json({ error: 'É necessário preencher todos os campos' });
+      return;
     }
     const { error } = await supabase
       .from('goals')
