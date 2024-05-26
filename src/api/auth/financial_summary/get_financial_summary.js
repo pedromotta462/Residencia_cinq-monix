@@ -2,7 +2,7 @@ import { supabase } from "../../../init";
 
 export const get_financial_summary = async (req, res) => {
   try {
-    const userId = req.user.id; // Supõe que você esteja utilizando autenticação e que o user_id está disponível no req.user
+    const userId = req.user.id;
     const startDate = req.query.start_date || "2024-01-01";
     const endDate = req.query.end_date || "2024-12-31";
 

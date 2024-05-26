@@ -34,7 +34,6 @@ import { get_user_planned_incoming_category_by_category_id } from './planned_inc
 import { post_user_planned_incoming_category } from './planned_incoming_category/post_user_planned_incoming_category';
 import { put_user_planned_incoming_category } from './planned_incoming_category/put_user_planned_incoming_category';
 import { delete_user_planned_incoming_category } from './planned_incoming_category/delete_user_planned_incoming_category';
-<<<<<<< HEAD
 import { get_user_goals } from './goals/get_user_goals';
 import { post_user_goals } from './goals/post_user_goals';
 import { put_user_goals } from './goals/put_user_goals';
@@ -43,10 +42,7 @@ import { get_user_incomings } from './incomings/get_user_incomings';
 import { post_user_incomings } from './incomings/post_user_incomings';
 import { put_user_incomings } from './incomings/put_user_incomings';
 import { delete_user_incomings } from './incomings/delete_user_incomings';
-=======
 import { get_financial_summary } from './financial_summary/get_financial_summary';
-
->>>>>>> origin/squad-04
 
 
 export const auth_router = express.Router();
@@ -100,14 +96,10 @@ auth_router.get('/user/investments', get_user_investments)
 auth_router.post('/user/investments', post_user_investments)
 auth_router.put('/user/investments/:id', put_user_investments)
 auth_router.delete('/user/investments/:id', delete_user_investments)
-<<<<<<< HEAD
 //incomings
 auth_router.get('/user/incomings', get_user_incomings)
 auth_router.post('/user/incomings', post_user_incomings)
 auth_router.put('/user/incomings/:id', put_user_incomings)
 auth_router.delete('/user/incomings/:id', delete_user_incomings)
-
-=======
 //views
 auth_router.get('/user/financial_summary', get_financial_summary)
->>>>>>> origin/squad-04
