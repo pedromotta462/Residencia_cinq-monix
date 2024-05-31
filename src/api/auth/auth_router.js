@@ -55,7 +55,7 @@ import { put_user_planned_incoming } from './planned_incoming/put_user_planned_i
 import { delete_user_planned_incoming } from './planned_incoming/delete_user_planned_incoming';
 import { get_user_planned_investment_category_by_planned_investment_id } from './planned_investment_category/get_user_planned_investment_category';
 import { post_user_planned_investment_category } from './planned_investment_category/post_user_planned_investment_category';
-import { put_user_planned_investment_category } from './planned_investment_category/put_user_planned_incoming_category';
+import { put_user_planned_investment_category } from './planned_investment_category/put_user_planned_investment_category';
 import { delete_user_planned_investment_category } from './planned_investment_category/delete_user_planned_investment_category';
 import { delete_user_planned_expense_category } from './planned_expense_category/delete_user_planned_expense_category';
 import { put_user_planned_expense_category } from './planned_expense_category/put_user_planned_expense_category';

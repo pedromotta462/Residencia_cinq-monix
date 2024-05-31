@@ -4,6 +4,8 @@ export const put_user_planned_investment_category = async (req, res) => {
   try {
     const planned_investment_category_id = req.params.id;
     const updated_planned_investment_category = {
+      planned_investment_id: req.body.planned_investment_id,
+      category_id: req.body.category_id,
       value: req.body.value,
     };
 
@@ -18,11 +20,11 @@ export const put_user_planned_investment_category = async (req, res) => {
 
     res
       .status(200)
-      .send("Categoria de entrada planejada atualizada com sucesso");
+      .send("Categoria de investimento planejada atualizada com sucesso");
   } catch (error) {
-    console.error("Erro ao atualizar categoria de entrada planejada:", error);
+    console.error("Erro ao atualizar categoria de investimento planejada:", error);
     res
       .status(500)
-      .json({ error: "Erro ao atualizar categoria da entrada planejada" });
+      .json({ error: "Erro ao atualizar categoria da investimento planejada" });
   }
 };
