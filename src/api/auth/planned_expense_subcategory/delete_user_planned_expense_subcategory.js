@@ -17,7 +17,7 @@ export const delete_user_planned_expense_subcategory = async (req, res) => {
             throw error;
         }
         
-        res.status(200).send("Categoria de entrada planejada excluído com sucesso");
+        res.status(200).send("Subcategoria de despesa planejada excluída com sucesso");
         } catch (error) {
             console.error('Erro ao excluir subcategoria de despesa planejada:', error);
             res.status(500).json({ error: 'Erro ao excluir subcategoria de despesa planejada' });

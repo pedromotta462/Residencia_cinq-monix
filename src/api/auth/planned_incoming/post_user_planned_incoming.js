@@ -1,9 +1,8 @@
 import { supabase } from '../../../init';
 
-export const post_planned_incoming = async (req, res) => {
+export const post_user_planned_incoming = async (req, res) => {
     try {
-        if (!req.body.user_id
-            || !req.body.month
+        if (!req.body.month
             || !req.body.year ) {
             res.status(400).json({ error: 'É necessário preencher todos os campos obrigatórios' });
             return;
@@ -12,7 +11,7 @@ export const post_planned_incoming = async (req, res) => {
         const { error } = await supabase
             .from('planned_incoming')
             .insert({
-                user_id: req.body.user_id,
+                user_id: req.user.id,
                 month: req.body.month,
                 year: req.body.year,
             });
