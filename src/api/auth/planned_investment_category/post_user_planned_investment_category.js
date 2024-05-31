@@ -4,8 +4,8 @@ export const post_user_planned_investment_category = async (req, res) => {
   try {
     if (
       !req.body.planned_investment_id ||
-      !req.body.category.id ||
-      req.body.value
+      !req.body.category_id ||
+      !req.body.value
     ) {
       res.status(400).json({ error: "É necessário preencher todos os campos" });
     }
@@ -14,7 +14,7 @@ export const post_user_planned_investment_category = async (req, res) => {
       .from("planned_investment_category")
       .insert({
         planned_investment_id: req.body.planned_investment_id,
-        category_id: req.body.category.id,
+        category_id: req.body.category_id,
         value: req.body.value,
       });
     if (error) {

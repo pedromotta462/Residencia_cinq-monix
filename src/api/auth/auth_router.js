@@ -53,6 +53,10 @@ import { post_user_planned_incoming } from './planned_incoming/post_user_planned
 import { get_user_planned_incoming } from './planned_incoming/get_user_planned_incoming';
 import { put_user_planned_incoming } from './planned_incoming/put_user_planned_incoming';
 import { delete_user_planned_incoming } from './planned_incoming/delete_user_planned_incoming';
+import { get_user_planned_investment_category_by_planned_investment_id } from './planned_investment_category/get_user_planned_investment_category';
+import { post_user_planned_investment_category } from './planned_investment_category/post_user_planned_investment_category';
+import { put_user_planned_investment_category } from './planned_investment_category/put_user_planned_incoming_category';
+import { delete_user_planned_investment_category } from './planned_investment_category/delete_user_planned_investment_category';
 
 
 export const auth_router = express.Router();
@@ -104,6 +108,11 @@ auth_router.get('/user/planned_incoming_category/:id', get_user_planned_incoming
 auth_router.post('/user/planned_incoming_category', post_user_planned_incoming_category)
 auth_router.put('/user/planned_incoming_category/:id', put_user_planned_incoming_category)
 auth_router.delete('/user/planned_incoming_category/:id', delete_user_planned_incoming_category)
+//planned_investment_category
+auth_router.get('/user/planned_investment_category/:id', get_user_planned_investment_category_by_planned_investment_id)
+auth_router.post('/user/planned_investment_category', post_user_planned_investment_category)
+auth_router.put('/user/planned_investment_category/:id', put_user_planned_investment_category)
+auth_router.delete('/user/planned_investment_category/:id', delete_user_planned_investment_category)
 //members
 auth_router.get('/user/members', get_user_members)
 auth_router.post('/user/members', post_user_members)
