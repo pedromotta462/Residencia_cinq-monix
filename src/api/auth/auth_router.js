@@ -42,7 +42,7 @@ import { get_user_incomings } from './incomings/get_user_incomings';
 import { post_user_incomings } from './incomings/post_user_incomings';
 import { put_user_incomings } from './incomings/put_user_incomings';
 import { delete_user_incomings } from './incomings/delete_user_incomings';
-import { get_financial_summary } from './financial_summary/get_financial_summary';
+import { get_financial_summary } from './controllers/financialSummaryController';
 
 
 export const auth_router = express.Router();

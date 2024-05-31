@@ -1,12 +1,18 @@
 import { supabase } from "../../../init";
 
-export const get_financial_summary = async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const startDate = req.query.start_date || "2024-01-01";
-    const endDate = req.query.end_date || "2024-12-31";
+const flattenCategories = (data, categoryKey) =>
+  data.flatMap((item) =>
+    item[categoryKey].map((cat) => ({
+      category_id: cat.category_id,
+      value: cat.value,
+    }))
+  );
 
-    // Filtragem por data inicial e final e user_id
+const calculateTotals = (records, key) =>
+  records.reduce((sum, record) => sum + record[key], 0);
+
+export const getFinancialSummary = async (userId, startDate, endDate) => {
+  try {
     const { data: incomings, error: incomingsError } = await supabase
       .from("incomings")
       .select("*")
@@ -34,7 +40,6 @@ export const get_financial_summary = async (req, res) => {
 
     if (investmentsError) throw investmentsError;
 
-    // Planejamentos filtrados por user_id
     const { data: plannedIncomings, error: plannedIncomingsError } =
       await supabase
         .from("planned_incoming")
@@ -68,15 +73,6 @@ export const get_financial_summary = async (req, res) => {
 
     if (plannedInvestmentsError) throw plannedInvestmentsError;
 
-    // Transformar os dados de planejamentos em uma lista única por categoria
-    const flattenCategories = (data, categoryKey) =>
-      data.flatMap((item) =>
-        item[categoryKey].map((cat) => ({
-          category_id: cat.category_id,
-          value: cat.value,
-        }))
-      );
-
     const plannedIncomingsFlat = flattenCategories(
       plannedIncomings,
       "planned_incoming_category"
@@ -90,39 +86,25 @@ export const get_financial_summary = async (req, res) => {
       "planned_investment_category"
     );
 
-    // Calcular os totais
-    const totalIncomings = incomings.reduce(
-      (sum, record) => sum + record.value,
-      0
-    );
-    const totalExpenses = expenses.reduce(
-      (sum, record) => sum + record.value,
-      0
-    );
-    const totalInvestments = investments.reduce(
-      (sum, record) => sum + record.value,
-      0
-    );
+    const totalIncomings = calculateTotals(incomings, "value");
+    const totalExpenses = calculateTotals(expenses, "value");
+    const totalInvestments = calculateTotals(investments, "value");
 
     const resultLaunch = totalIncomings - totalExpenses - totalInvestments;
 
-    const totalPlannedIncomings = plannedIncomingsFlat.reduce(
-      (sum, record) => sum + record.value,
-      0
+    const totalPlannedIncomings = calculateTotals(
+      plannedIncomingsFlat,
+      "value"
     );
-    const totalPlannedExpenses = plannedExpensesFlat.reduce(
-      (sum, record) => sum + record.value,
-      0
-    );
-    const totalPlannedInvestments = plannedInvestmentsFlat.reduce(
-      (sum, record) => sum + record.value,
-      0
+    const totalPlannedExpenses = calculateTotals(plannedExpensesFlat, "value");
+    const totalPlannedInvestments = calculateTotals(
+      plannedInvestmentsFlat,
+      "value"
     );
 
     const resultPlanning =
       totalPlannedIncomings - totalPlannedExpenses - totalPlannedInvestments;
 
-    // Obter todas as categorias
     const categories = [
       ...new Set([
         ...incomings.map((record) => record.category_id),
@@ -134,27 +116,38 @@ export const get_financial_summary = async (req, res) => {
       ]),
     ];
 
-    // Calcular resultados por categoria
     const financialSummary = categories.map((categoryId) => {
-      const incomingsByCategory = incomings
-        .filter((record) => record.category_id === categoryId)
-        .reduce((sum, record) => sum + record.value, 0);
-      const expensesByCategory = expenses
-        .filter((record) => record.category_id === categoryId)
-        .reduce((sum, record) => sum + record.value, 0);
-      const investmentsByCategory = investments
-        .filter((record) => record.category_id === categoryId)
-        .reduce((sum, record) => sum + record.value, 0);
+      const incomingsByCategory = calculateTotals(
+        incomings.filter((record) => record.category_id === categoryId),
+        "value"
+      );
+      const expensesByCategory = calculateTotals(
+        expenses.filter((record) => record.category_id === categoryId),
+        "value"
+      );
+      const investmentsByCategory = calculateTotals(
+        investments.filter((record) => record.category_id === categoryId),
+        "value"
+      );
 
-      const plannedIncomingsByCategory = plannedIncomingsFlat
-        .filter((record) => record.category_id === categoryId)
-        .reduce((sum, record) => sum + record.value, 0);
-      const plannedExpensesByCategory = plannedExpensesFlat
-        .filter((record) => record.category_id === categoryId)
-        .reduce((sum, record) => sum + record.value, 0);
-      const plannedInvestmentsByCategory = plannedInvestmentsFlat
-        .filter((record) => record.category_id === categoryId)
-        .reduce((sum, record) => sum + record.value, 0);
+      const plannedIncomingsByCategory = calculateTotals(
+        plannedIncomingsFlat.filter(
+          (record) => record.category_id === categoryId
+        ),
+        "value"
+      );
+      const plannedExpensesByCategory = calculateTotals(
+        plannedExpensesFlat.filter(
+          (record) => record.category_id === categoryId
+        ),
+        "value"
+      );
+      const plannedInvestmentsByCategory = calculateTotals(
+        plannedInvestmentsFlat.filter(
+          (record) => record.category_id === categoryId
+        ),
+        "value"
+      );
 
       return {
         category_id: categoryId,
@@ -167,7 +160,7 @@ export const get_financial_summary = async (req, res) => {
       };
     });
 
-    res.status(200).json({
+    return {
       total_incomings: totalIncomings,
       total_expenses: totalExpenses,
       total_investments: totalInvestments,
@@ -177,11 +170,9 @@ export const get_financial_summary = async (req, res) => {
       total_planned_investments: totalPlannedInvestments,
       result_planning: resultPlanning,
       categories: financialSummary,
-    });
+    };
   } catch (error) {
     console.error("Erro ao acessar o resumo financeiro:", error);
-    res
-      .status(500)
-      .json({ error: "Erro ao acessar o resumo financeiro" });
+    throw error;
   }
 };
