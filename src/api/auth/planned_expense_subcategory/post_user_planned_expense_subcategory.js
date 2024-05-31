@@ -10,7 +10,7 @@ export const post_user_planned_expense_subcategory = async (req, res) => {
         }
 
         const { error } = await supabase
-        .from('planned_incoming_category')
+        .from('planned_expense_subcategory')
         .insert({
             planned_expense_category_id : req.body.planned_expense_category_id ,
             subcategory_id: req.body.subcategory_id,
