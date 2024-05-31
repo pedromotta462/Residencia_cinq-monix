@@ -2,7 +2,7 @@ import { supabase } from '../../../init';
 
 export const post_user_planned_expense_category = async (req, res) => {
     try {
-        if (!req.body.planned_expense_id || req.body.category_id
+        if (!req.body.planned_expense_id || !req.body.category_id
         ) {
             res.status(400).json({ error: 'É necessário preencher todos os campos' });
         }
