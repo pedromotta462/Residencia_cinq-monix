@@ -21,6 +21,7 @@
 - Brenno Freitas
 - Carlos Sérgio
 - Júlia Rocha
+- Pedro Tavares
 - Sidney Lima
 
 ### Squad - 04:
