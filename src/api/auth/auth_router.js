@@ -30,7 +30,7 @@ import { get_user_investments } from './investments/get_user_investments';
 import { post_user_investments } from './investments/post_user_investments';
 import { put_user_investments } from './investments/put_user_investments';
 import { delete_user_investments } from './investments/delete_user_investments';
-import { get_user_planned_incoming_category_by_category_id } from './planned_incoming_category/get_user_planned_incoming_category';
+import { get_user_planned_incoming_category_by_planned_incoming_id } from './planned_incoming_category/get_user_planned_incoming_category';
 import { post_user_planned_incoming_category } from './planned_incoming_category/post_user_planned_incoming_category';
 import { put_user_planned_incoming_category } from './planned_incoming_category/put_user_planned_incoming_category';
 import { delete_user_planned_incoming_category } from './planned_incoming_category/delete_user_planned_incoming_category';
@@ -42,6 +42,23 @@ import { get_user_incomings } from './incomings/get_user_incomings';
 import { post_user_incomings } from './incomings/post_user_incomings';
 import { put_user_incomings } from './incomings/put_user_incomings';
 import { delete_user_incomings } from './incomings/delete_user_incomings';
+import { get_financial_summary } from './financial_summary/get_financial_summary';
+import { get_user_planned_expense_subcategory_by_planned_expense_category_id } from './planned_expense_subcategory/get_user_planned_expense_subcategory';
+import { post_user_planned_expense_subcategory } from './planned_expense_subcategory/post_user_planned_expense_subcategory';
+import { put_user_planned_expense_subcategory } from './planned_expense_subcategory/put_user_planned_expense_subcategory';
+import { delete_user_planned_expense_subcategory } from './planned_expense_subcategory/delete_user_planned_expense_subcategory';
+import { get_user_planned_expense_category_by_planned_expense_id } from './planned_expense_category/get_user_planned_expense_category';
+import { post_user_planned_expense_category } from './planned_expense_category/post_user_planned_expense_category';
+import { post_user_planned_incoming } from './planned_incoming/post_user_planned_incoming';
+import { get_user_planned_incoming } from './planned_incoming/get_user_planned_incoming';
+import { put_user_planned_incoming } from './planned_incoming/put_user_planned_incoming';
+import { delete_user_planned_incoming } from './planned_incoming/delete_user_planned_incoming';
+import { get_user_planned_investment_category_by_planned_investment_id } from './planned_investment_category/get_user_planned_investment_category';
+import { post_user_planned_investment_category } from './planned_investment_category/post_user_planned_investment_category';
+import { put_user_planned_investment_category } from './planned_investment_category/put_user_planned_investment_category';
+import { delete_user_planned_investment_category } from './planned_investment_category/delete_user_planned_investment_category';
+import { delete_user_planned_expense_category } from './planned_expense_category/delete_user_planned_expense_category';
+import { put_user_planned_expense_category } from './planned_expense_category/put_user_planned_expense_category';
 
 
 export const auth_router = express.Router();
@@ -75,11 +92,31 @@ auth_router.get('/user/planned_expenses', get_user_planned_expense)
 auth_router.post('/user/planned_expenses', post_user_planned_expense)
 auth_router.put('/user/planned_expenses/:id', put_user_planned_expense)
 auth_router.delete('/user/planned_expenses/:id', delete_user_planned_expense)
+//planned_expenses_category
+auth_router.get('/user/planned_expense_category/:id', get_user_planned_expense_category_by_planned_expense_id)
+auth_router.post('/user/planned_expense_category', post_user_planned_expense_category)
+auth_router.put('/user/planned_expense_category/:id', put_user_planned_expense_category)
+auth_router.delete('/user/planned_expense_category/:id', delete_user_planned_expense_category)
+//planned_expenses_subcategory
+auth_router.get('/user/planned_expenses_subcategory/:id', get_user_planned_expense_subcategory_by_planned_expense_category_id)
+auth_router.post('/user/planned_expenses_subcategory', post_user_planned_expense_subcategory)
+auth_router.put('/user/planned_expenses_subcategory/:id', put_user_planned_expense_subcategory)
+auth_router.delete('/user/planned_expenses_subcategory/:id', delete_user_planned_expense_subcategory)
+//planned_incoming
+auth_router.get('/user/planned_incoming', get_user_planned_incoming)
+auth_router.post('/user/planned_incoming', post_user_planned_incoming)
+auth_router.put('/user/planned_incoming/:id', put_user_planned_incoming)
+auth_router.delete('/user/planned_incoming/:id', delete_user_planned_incoming)
 //planned_incoming_category
-auth_router.get('/user/planned_incoming_category/:id', get_user_planned_incoming_category_by_category_id)
+auth_router.get('/user/planned_incoming_category/:id', get_user_planned_incoming_category_by_planned_incoming_id)
 auth_router.post('/user/planned_incoming_category', post_user_planned_incoming_category)
 auth_router.put('/user/planned_incoming_category/:id', put_user_planned_incoming_category)
 auth_router.delete('/user/planned_incoming_category/:id', delete_user_planned_incoming_category)
+//planned_investment_category
+auth_router.get('/user/planned_investment_category/:id', get_user_planned_investment_category_by_planned_investment_id)
+auth_router.post('/user/planned_investment_category', post_user_planned_investment_category)
+auth_router.put('/user/planned_investment_category/:id', put_user_planned_investment_category)
+auth_router.delete('/user/planned_investment_category/:id', delete_user_planned_investment_category)
 //members
 auth_router.get('/user/members', get_user_members)
 auth_router.post('/user/members', post_user_members)
@@ -100,4 +137,5 @@ auth_router.get('/user/incomings', get_user_incomings)
 auth_router.post('/user/incomings', post_user_incomings)
 auth_router.put('/user/incomings/:id', put_user_incomings)
 auth_router.delete('/user/incomings/:id', delete_user_incomings)
-
+//views
+auth_router.get('/user/financial_summary', get_financial_summary)

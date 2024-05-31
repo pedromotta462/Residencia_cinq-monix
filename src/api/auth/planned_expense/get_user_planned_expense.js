@@ -6,7 +6,10 @@ export const get_user_planned_expense = async (req, res) => {
         .from('planned_expense')
         .select(`
             id,
-            user_id,
+            user_id (
+                id,
+                name
+            ),
             month,
             year
         `)
