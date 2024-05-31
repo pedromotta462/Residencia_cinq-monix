@@ -8,7 +8,11 @@ export const get_user_planned_expense_subcategory_by_planned_expense_category_id
             id,
             planned_expense_category_id(
                 id,
-                category_id
+                category_id (
+                    id, 
+                    name
+                ),
+                value
             ),
             subcategory_id(
                 id,
