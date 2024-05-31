@@ -57,6 +57,8 @@ import { get_user_planned_investment_category_by_planned_investment_id } from '.
 import { post_user_planned_investment_category } from './planned_investment_category/post_user_planned_investment_category';
 import { put_user_planned_investment_category } from './planned_investment_category/put_user_planned_incoming_category';
 import { delete_user_planned_investment_category } from './planned_investment_category/delete_user_planned_investment_category';
+import { delete_user_planned_expense_category } from './planned_expense_category/delete_user_planned_expense_category';
+import { put_user_planned_expense_category } from './planned_expense_category/put_user_planned_expense_category';
 
 
 export const auth_router = express.Router();
@@ -93,6 +95,8 @@ auth_router.delete('/user/planned_expenses/:id', delete_user_planned_expense)
 //planned_expenses_category
 auth_router.get('/user/planned_expense_category/:id', get_user_planned_expense_category_by_planned_expense_id)
 auth_router.post('/user/planned_expense_category', post_user_planned_expense_category)
+auth_router.put('/user/planned_expense_category/:id', put_user_planned_expense_category)
+auth_router.delete('/user/planned_expense_category/:id', delete_user_planned_expense_category)
 //planned_expenses_subcategory
 auth_router.get('/user/planned_expenses_subcategory/:id', get_user_planned_expense_subcategory_by_planned_expense_category_id)
 auth_router.post('/user/planned_expenses_subcategory', post_user_planned_expense_subcategory)
