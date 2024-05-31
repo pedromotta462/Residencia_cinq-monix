@@ -4,6 +4,8 @@ export const put_user_planned_incoming_category = async (req, res) => {
   try {
     const planned_incoming_category_id = req.params.id;
     const updated_planned_incoming_category = {
+      planned_incoming_id: req.body.planned_incoming,
+      category_id: req.body.category_id,
       value: req.body.value
     };
 
