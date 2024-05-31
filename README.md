@@ -24,6 +24,17 @@
 - Pedro Tavares
 - Sidney Lima
 
+### Squad - 03:
+
+- Pedro Motta
+- Carlos Gabriel
+- Cauã Coutinho
+- Gabriel Lins
+- Thiego Joaquim
+- Yuri Cavalcanti
+- Thiago Lemos
+- Samuel Kainã
+
 ### Squad - 04:
 
 - Andrey Kaiky Reis Ferreira
