@@ -6,7 +6,10 @@ export const get_user_planned_incoming = async (req, res) => {
             .from('planned_incoming')
             .select(`
                 id,
-                user_id,
+                user_id (
+                    id,
+                    name
+                ),
                 month,
                 year
             `)

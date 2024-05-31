@@ -9,8 +9,19 @@ export const get_user_planned_investment_category_by_planned_investment_id = asy
       .from("planned_investment_category")
       .select(
         `id,
-         planned_investment_id(id,month,year),
-         category_id(id,name),
+         planned_investment_id(
+          id,
+          month,
+          year,
+          user_id (
+            id,
+            name
+          )
+        ),
+         category_id(
+          id,
+          name
+        ),
          value`
       )
       .eq("planned_investment_id", req.params.id);
