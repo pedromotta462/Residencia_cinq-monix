@@ -19,6 +19,6 @@ export const get_user_planned_expense_subcategory_by_planned_expense_category_id
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({ error: 'Erro ao recuperar subcategorias das entradas planejadas' });
+        res.status(500).json({ error: 'Erro ao recuperar subcategorias das despesas planejadas' });
     }
 }
