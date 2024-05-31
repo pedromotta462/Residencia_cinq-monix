@@ -1,6 +1,6 @@
 import { supabase } from "../../../init";
 
-export const get_user_planned_investment_category_by_investment_id = async (
+export const get_user_planned_investment_category_by_planned_investment_id = async (
   req,
   res
 ) => {
@@ -13,7 +13,7 @@ export const get_user_planned_investment_category_by_investment_id = async (
          category_id(id,name),
          value`
       )
-      .eq("investment_id", req.params.id);
+      .eq("planned_investment_id", req.params.id);
     if (error) {
       throw error;
     }
