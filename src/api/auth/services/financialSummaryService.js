@@ -116,6 +116,19 @@ export const getFinancialSummary = async (userId, startDate, endDate) => {
       ]),
     ];
 
+    // Obter os nomes das categorias
+    const { data: categoryData, error: categoryError } = await supabase
+      .from("categories")
+      .select("id, name")
+      .in("id", categories);
+
+    if (categoryError) throw categoryError;
+
+    const categoryMap = categoryData.reduce((map, category) => {
+      map[category.id] = category.name;
+      return map;
+    }, {});
+
     const financialSummary = categories.map((categoryId) => {
       const incomingsByCategory = calculateTotals(
         incomings.filter((record) => record.category_id === categoryId),
@@ -151,6 +164,7 @@ export const getFinancialSummary = async (userId, startDate, endDate) => {
 
       return {
         category_id: categoryId,
+        category_name: categoryMap[categoryId] || "Unknown",
         result_launch_category:
           incomingsByCategory - expensesByCategory - investmentsByCategory,
         result_planned_category:
