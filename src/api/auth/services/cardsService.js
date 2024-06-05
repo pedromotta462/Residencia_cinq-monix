@@ -1,6 +1,5 @@
 import { supabase } from "../../../init";
 
-// Service to get user cards
 export const getUserCards = async (userId) => {
   try {
     const { data, error } = await supabase
@@ -24,7 +23,6 @@ export const getUserCards = async (userId) => {
   }
 };
 
-// Service to create user card
 export const createUserCard = async (userId, cardData) => {
   try {
     const { error } = await supabase.from("cards").insert({
@@ -43,7 +41,6 @@ export const createUserCard = async (userId, cardData) => {
   }
 };
 
-// Service to update user card
 export const updateUserCard = async (id, cardData) => {
   try {
     const updatedCard = {
@@ -66,7 +63,6 @@ export const updateUserCard = async (id, cardData) => {
   }
 };
 
-// Service to delete user card
 export const deleteUserCard = async (id) => {
   try {
     const { error } = await supabase.from("cards").delete().eq("id", id);

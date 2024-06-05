@@ -5,7 +5,6 @@ import {
   deleteUserCard,
 } from "../services/cardsService";
 
-// Controller to get user cards
 export const get_user_cards = async (req, res) => {
   try {
     const { data, error } = await getUserCards(req.user.id);
@@ -18,7 +17,6 @@ export const get_user_cards = async (req, res) => {
   }
 };
 
-// Controller to create user card
 export const post_user_cards = async (req, res) => {
   try {
     if (!req.body.name) {
@@ -35,7 +33,6 @@ export const post_user_cards = async (req, res) => {
   }
 };
 
-// Controller to update user card
 export const put_user_cards = async (req, res) => {
   try {
     const id = req.params.id;
@@ -61,7 +58,6 @@ export const put_user_cards = async (req, res) => {
   }
 };
 
-// Controller to delete user card
 export const delete_user_cards = async (req, res) => {
   try {
     const id = req.params.id;

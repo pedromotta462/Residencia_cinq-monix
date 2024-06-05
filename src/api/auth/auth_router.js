@@ -18,10 +18,7 @@ import { get_user_typeofexpenses } from './type_expenses/get_user_typeofexpenses
 import { put_user_typeofexpenses } from './type_expenses/put_user_typeofexpenses';
 import { put_user_planned_expense } from './planned_expense/put_user_planned_expense';
 import { delete_user_planned_expense } from './planned_expense/delete_user_planned_expense';
-import { get_user_members } from './members/get_user_members';
-import { post_user_members } from './members/post_user_members';
-import { put_user_members } from './members/put_user_members';
-import { delete_user_members } from './members/delete_user_members';
+import { get_members, post_members, put_members, delete_members } from './controllers/membersController';
 import { get_user_cards, post_user_cards, put_user_cards, delete_user_cards } from './controllers/cardsController';
 import { get_user_investments } from './investments/get_user_investments';
 import { post_user_investments } from './investments/post_user_investments';
@@ -39,7 +36,7 @@ import { get_user_incomings } from './incomings/get_user_incomings';
 import { post_user_incomings } from './incomings/post_user_incomings';
 import { put_user_incomings } from './incomings/put_user_incomings';
 import { delete_user_incomings } from './incomings/delete_user_incomings';
-import { get_financial_summary } from './financial_summary/get_financial_summary';
+import { get_financial_summary } from './controllers/financialSummaryController';
 import { get_user_planned_expense_subcategory_by_planned_expense_category_id } from './planned_expense_subcategory/get_user_planned_expense_subcategory';
 import { post_user_planned_expense_subcategory } from './planned_expense_subcategory/post_user_planned_expense_subcategory';
 import { put_user_planned_expense_subcategory } from './planned_expense_subcategory/put_user_planned_expense_subcategory';
@@ -115,10 +112,10 @@ auth_router.post('/user/planned_investment_category', post_user_planned_investme
 auth_router.put('/user/planned_investment_category/:id', put_user_planned_investment_category)
 auth_router.delete('/user/planned_investment_category/:id', delete_user_planned_investment_category)
 //members
-auth_router.get('/user/members', get_user_members)
-auth_router.post('/user/members', post_user_members)
-auth_router.put('/user/members/:id', put_user_members)
-auth_router.delete('/user/members/:id', delete_user_members)
+auth_router.get('/user/members', get_members)
+auth_router.post('/user/members', post_members)
+auth_router.put('/user/members/:id', put_members)
+auth_router.delete('/user/members/:id', delete_members)
 //cards
 auth_router.get('/user/cards', get_user_cards)
 auth_router.post('/user/cards', post_user_cards)
