@@ -20,10 +20,7 @@ import { put_user_planned_expense } from './planned_expense/put_user_planned_exp
 import { delete_user_planned_expense } from './planned_expense/delete_user_planned_expense';
 import { get_members, post_members, put_members, delete_members } from './controllers/membersController';
 import { get_user_cards, post_user_cards, put_user_cards, delete_user_cards } from './controllers/cardsController';
-import { get_user_investments } from './investments/get_user_investments';
-import { post_user_investments } from './investments/post_user_investments';
-import { put_user_investments } from './investments/put_user_investments';
-import { delete_user_investments } from './investments/delete_user_investments';
+import { get_investments, post_investments, put_investments, delete_investments } from './controllers/investmentsController';
 import { get_user_planned_incoming_category_by_planned_incoming_id } from './planned_incoming_category/get_user_planned_incoming_category';
 import { post_user_planned_incoming_category } from './planned_incoming_category/post_user_planned_incoming_category';
 import { put_user_planned_incoming_category } from './planned_incoming_category/put_user_planned_incoming_category';
@@ -122,10 +119,10 @@ auth_router.post('/user/cards', post_user_cards)
 auth_router.put('/user/cards/:id', put_user_cards)
 auth_router.delete('/user/cards/:id', delete_user_cards)
 //investments
-auth_router.get('/user/investments', get_user_investments)
-auth_router.post('/user/investments', post_user_investments)
-auth_router.put('/user/investments/:id', put_user_investments)
-auth_router.delete('/user/investments/:id', delete_user_investments)
+auth_router.get('/user/investments', get_investments)
+auth_router.post('/user/investments', post_investments)
+auth_router.put('/user/investments/:id', put_investments)
+auth_router.delete('/user/investments/:id', delete_investments)
 //incomings
 auth_router.get('/user/incomings', get_user_incomings)
 auth_router.post('/user/incomings', post_user_incomings)

@@ -1,10 +1,12 @@
 import { supabase } from './../init.js';
 
-export const createDbUser = async (userData) => {
+export const createDbUser = async ({ id, email, name }) => {
   try {
     const { data, error } = await supabase
     .from("users")
-    .insert(userData)
+    .insert([
+      { id, email, name }
+    ]);
 
     if (error) {
       throw error

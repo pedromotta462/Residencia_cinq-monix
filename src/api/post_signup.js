@@ -16,7 +16,7 @@ export const post_signup =  async (req, res) => {
       return res.status(400).json({ error: 'Email já cadastrado' });
     }
     // 1. Insere novo usuário na Auth do supabase
-    let authId = await createAuthUser(email, password);
+    let authId = await createAuthUser(email, password, name);
 
     // 2. Insere novo usuário na tabela Users do supabase
     createDbUser({ id:authId, email, name});
