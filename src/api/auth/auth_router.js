@@ -61,7 +61,7 @@ import { get_account_by_id } from './accounts/get_user_account_by_id';
 import { post_account } from './accounts/post_user_account';
 import { put_account } from './accounts/put_user_account';
 import { delete_account } from './accounts/delete_user_account';
-
+import { get_goals_info } from './goals/post_view_goals';
 
 export const auth_router = express.Router();
 //user
@@ -69,17 +69,12 @@ auth_router.get('/user', get_user)
 auth_router.put('/user/:id', put_user)
 auth_router.delete('/user/:id', delete_user)
 //accounts
-
 auth_router.get('/user/accounts', get_accounts)
-
 auth_router.get('/user/accounts/:id', get_account_by_id)
-
 auth_router.post('/user/account', post_account)
-
 auth_router.put('/user/accounts/:id', put_account)
-
 auth_router.delete('/user/accounts/:id', delete_account)
-
+auth_router.get('/user/goals_info', get_goals_info)
 //categories
 auth_router.get('/user/categories', get_user_categories)
 auth_router.post('/user/categories', post_user_category)

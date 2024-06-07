@@ -25,9 +25,10 @@ export const post_signup =  async (req, res) => {
 
     // 2. Insere novo usuário na tabela Users do supabase
     let userData = { id: authId, email, name, phone, rg, cpf, profession, organ_issuer, post_code, address, birth_date };
-    await createDbUser(userData);
+    console.log(userData);
+    const user = await createDbUser(userData);
 
-    res.status(200).send("Usuário cadastro com sucesso")
+    res.status(200).send("Usuário cadastro com sucesso", user);
     
   } catch (error) {
     if (error.message.includes('Email já cadastrado')) {
