@@ -50,11 +50,17 @@ import { put_user_planned_investment_category } from './planned_investment_categ
 import { delete_user_planned_investment_category } from './planned_investment_category/delete_user_planned_investment_category';
 import { delete_user_planned_expense_category } from './planned_expense_category/delete_user_planned_expense_category';
 import { put_user_planned_expense_category } from './planned_expense_category/put_user_planned_expense_category';
+import { put_user } from './user/put_user';
+import { delete_user } from './user/delete_user';
 
 
 export const auth_router = express.Router();
 //user
 auth_router.get('/user', get_user)
+auth_router.put('/user/:id', put_user)
+auth_router.delete('/user/:id', delete_user)
+//accounts
+
 //categories
 auth_router.get('/user/categories', get_user_categories)
 auth_router.post('/user/categories', post_user_category)

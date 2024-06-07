@@ -27,6 +27,7 @@ export const post_signup =  async (req, res) => {
     await createDbUser(userData);
 
     res.status(200).send("Usuário cadastro com sucesso")
+    
   } catch (error) {
     if (error.message.includes('Email já cadastrado')) {
       res.status(400).json({ error: 'Email já cadastrado' });
