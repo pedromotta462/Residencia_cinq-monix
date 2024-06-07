@@ -56,6 +56,11 @@ import { delete_user_planned_expense_category } from './planned_expense_category
 import { put_user_planned_expense_category } from './planned_expense_category/put_user_planned_expense_category';
 import { put_user } from './user/put_user';
 import { delete_user } from './user/delete_user';
+import { get_accounts } from './accounts/get_user_accounts';
+import { get_account_by_id } from './accounts/get_user_account_by_id';
+import { post_user_account } from './accounts/post_user_account';
+import { put_user_account } from './accounts/put_user_account';
+import { delete_user_account } from './accounts/delete_user_account';
 
 
 export const auth_router = express.Router();
@@ -64,7 +69,11 @@ auth_router.get('/user', get_user)
 auth_router.put('/user/:id', put_user)
 auth_router.delete('/user/:id', delete_user)
 //accounts
-
+auth_router.get('/user/accounts', get_accounts)
+auth_router.get('/user/accounts/:id', get_account_by_id)
+auth_router.post('/user/accounts', post_user_account)
+auth_router.put('/user/accounts/:id', put_user_account)
+auth_router.delete('/user/accounts/:id', delete_user_account)
 //categories
 auth_router.get('/user/categories', get_user_categories)
 auth_router.post('/user/categories', post_user_category)

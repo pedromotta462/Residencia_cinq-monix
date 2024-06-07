@@ -6,6 +6,7 @@ export const post_signup =  async (req, res) => {
   //não obrigatórios
   let { phone, rg, cpf, profession, organ_issuer, post_code, address, birth_date } = req.body;
 
+  console.log(req.body);
   //obrigatórios
   let {email, password, name} = req.body;
 
