@@ -44,6 +44,10 @@ import { post_user_planned_incoming } from './planned_incoming/post_user_planned
 import { get_user_planned_incoming } from './planned_incoming/get_user_planned_incoming';
 import { put_user_planned_incoming } from './planned_incoming/put_user_planned_incoming';
 import { delete_user_planned_incoming } from './planned_incoming/delete_user_planned_incoming';
+import { post_user_planned_investment } from './planned_investment/post_user_planned_investment';
+import { get_user_planned_investment } from './planned_investment/get_user_planned_investment';
+import { put_user_planned_investment } from './planned_investment/put_user_planned_investment';
+import { delete_user_planned_investment } from './planned_investment/delete_user_planned_investment';
 import { get_user_planned_investment_category_by_planned_investment_id } from './planned_investment_category/get_user_planned_investment_category';
 import { post_user_planned_investment_category } from './planned_investment_category/post_user_planned_investment_category';
 import { put_user_planned_investment_category } from './planned_investment_category/put_user_planned_investment_category';
@@ -109,6 +113,11 @@ auth_router.get('/user/planned_incoming_category/:id', get_user_planned_incoming
 auth_router.post('/user/planned_incoming_category', post_user_planned_incoming_category)
 auth_router.put('/user/planned_incoming_category/:id', put_user_planned_incoming_category)
 auth_router.delete('/user/planned_incoming_category/:id', delete_user_planned_incoming_category)
+//planned_investment
+auth_router.get('/user/planned_investment', get_user_planned_investment)
+auth_router.post('/user/planned_investment', post_user_planned_investment)
+auth_router.put('/user/planned_investment/:id', put_user_planned_investment)
+auth_router.delete('/user/planned_investment/:id', delete_user_planned_investment)
 //planned_investment_category
 auth_router.get('/user/planned_investment_category/:id', get_user_planned_investment_category_by_planned_investment_id)
 auth_router.post('/user/planned_investment_category', post_user_planned_investment_category)
